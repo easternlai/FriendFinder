@@ -4,9 +4,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Celebrity Date Finder</title>
+    <style>
+        /* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.hide{
+    display: none;
+}
+
+.block{
+    display: block;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+    </style>
 </head>
 <body>
-    Survey
+    <div id="match-modal" class="modal hide">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3 class="match-name"></h3>
+          <img src="" alt="" class="match-pic">
+        </div>
+      
+      </div>
+
+    <form id="radio-buttons">
+
+        First name:
+        <input id="first-name" type="text">
+        <br>
+
+        <p class="question">I like walks on the beach.</p>
+        <input type="radio" name="Q1" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q1" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q1" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q1" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q1" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I rather watch a movie in theaters than at home.</p>
+        <input type="radio" name="Q2" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q2" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q2" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q2" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q2" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I prefer waking up early than staying up late.</p>
+        <input type="radio" name="Q3" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q3" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q3" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q3" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q3" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I like dogs.</p>
+        <input type="radio" name="Q4" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q4" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q4" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q4" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q4" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I never met a person I didn't like.</p>
+        <input type="radio" name="Q5" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q5" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q5" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q5" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q5" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">Smoking is a deal breaker for me.</p>
+        <input type="radio" name="Q6" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q6" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q6" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q6" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q6" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I rather listen than talk.</p>
+        <input type="radio" name="Q7" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q7" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q7" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q7" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q7" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">Friendsgivings are better than family thanksgivings.</p>
+        <input type="radio" name="Q8" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q8" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q8" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q8" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q8" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">Christmas is my favorite holiday.</p>
+        <input type="radio" name="Q9" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q9" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q9" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q9" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q9" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <p class="question">I watch more sports than news.</p>
+        <input type="radio" name="Q10" value="1">
+        <span class="radio">strongly disagree</span>
+        <input type="radio" name="Q10" value="2">
+        <span class="radio"> disagree</span>
+        <input type="radio" name="Q10" value="3">
+        <span class="radio">somewhat agree</span>
+        <input type="radio" name="Q10" value="4">
+        <span class="radio">agree</span>
+        <input type="radio" name="Q10" value="5">
+        <span class="radio">strongly agree</span>
+
+        <br>
+
+        <button type="submit" id="submit">submit</button>
+
+
+    </form>
 </body>
+<script src="./app.js"></script>
 </html>
